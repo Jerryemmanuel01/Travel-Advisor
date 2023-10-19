@@ -13,7 +13,19 @@ import useStyles from "./styles"
 
 const List = () => {
   const classes = useStyles();
-  return <div>List</div>;
+  return(
+    <div className={classes.container}>
+      <Typography varient="h4">Restaurants, Hotels & Attractions around you</Typography>
+      <FormControl className={classes.formControl}>
+        <InputLabel>Type</InputLabel>
+        <Select value={} onChange={}>
+          <MenuItem value="restaurant">Restaurant</MenuItem>
+          <MenuItem value="hotels">Hotels</MenuItem>
+          <MenuItem value="attractions">Attractions</MenuItem>
+        </Select>
+      </FormControl>
+    </div>
+  );
 };
 
 export default List;
