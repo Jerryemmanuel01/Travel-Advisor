@@ -7,7 +7,7 @@ import { getPlacesData } from "./api/index";
 
 function App() {
   const [places, setPlaces] = useState([]);
-  const [filteredPlaces, setFilteredPlaces] = useState([])
+  const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState({});
   const [childClick, setChildClick] = useState(null);
@@ -27,20 +27,23 @@ function App() {
     const fliterPlaces = places.filter((place) => place.rating > rating);
 
     setFilteredPlaces(fliterPlaces);
-  },[rating])
+  }, [rating]);
 
   useEffect(() => {
-    setIsLoading(true)
-    getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-      setPlaces(data);
-      setFilteredPlaces([])
-      setIsLoading(false)
-    });
-  }, [type, coordinates, bounds]);
+    if (bounds.sw && bounds.ne) {
+      setIsLoading(true);
+      
+      getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+        setFilteredPlaces([]);
+        setIsLoading(false);
+      });
+    }
+  }, [type, bounds]);
   return (
     <>
       <CssBaseline />
-      <Header setCoordinates={setCoordinates}/>
+      <Header setCoordinates={setCoordinates} />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
           <List

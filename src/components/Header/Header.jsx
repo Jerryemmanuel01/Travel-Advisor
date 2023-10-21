@@ -42,9 +42,6 @@ const Header = ({ setCoordinates }) => {
         </Box>
       </Toolbar>
     </AppBar>
-    // <>
-    //   <h1>headercsa</h1>
-    // </>
   );
 };
 
