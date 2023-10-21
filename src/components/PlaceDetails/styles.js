@@ -15,4 +15,8 @@ export default makeStyles(() => ({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  detailsBox:{
+    display: 'flex',
+    justifyContent: 'space-between'
+  }
 }));
