@@ -9,7 +9,7 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="static">
       <Toolbar className={classes.toolbar}>
         <Typography variant="h5" className={classes.title}>
           Travel advisor
