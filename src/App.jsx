@@ -24,15 +24,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const fliterPlaces = places.filter((place) => place.rating > rating);
+    const fliteredPlaces = places.filter((place) => place.rating > rating);
 
-    setFilteredPlaces(fliterPlaces);
+    setFilteredPlaces(fliteredPlaces);
   }, [rating]);
 
   useEffect(() => {
     if (bounds.sw && bounds.ne) {
       setIsLoading(true);
-      
+
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
         setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
